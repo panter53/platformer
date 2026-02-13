@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEditor.ShortcutManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D rb;
     private CapsuleCollider2D cc;
+    public Image hpbar;
+    
     
 
     private Animator animator;
@@ -26,6 +29,7 @@ public class Player : MonoBehaviour
         cc = GetComponent<CapsuleCollider2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        
 
 
         canJumpFor = canJumpForTimes;
@@ -98,7 +102,9 @@ public class Player : MonoBehaviour
                 StartCoroutine(resetGameInSeconds());
 
             }
+            hpbar.fillAmount = health / 100f;
         }
+
     }
     private IEnumerator BlinkRed() 
     {

@@ -7,9 +7,11 @@ public class Enemy : MonoBehaviour
     public Transform[] points;
 
     private int i;
+    private SpriteRenderer spriteRenderer;
     void Start()
     {
         transform.position = points[0].position;
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -28,5 +30,6 @@ public class Enemy : MonoBehaviour
             }
 
         }
+        spriteRenderer.flipX = points[i].transform.position.x > transform.position.x;
     }
 }
